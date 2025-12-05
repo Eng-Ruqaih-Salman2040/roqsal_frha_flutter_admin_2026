@@ -3,5 +3,5 @@
 $host = "localhost";
 $userName = "root";
 $password = "";
-$database = "frha";
+$database = "roqsa_frha_2026";
 ?>
