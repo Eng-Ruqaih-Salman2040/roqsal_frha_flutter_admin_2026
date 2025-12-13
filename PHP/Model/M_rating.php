@@ -67,5 +67,64 @@ class rating
     return $ratings;
 }
 
+public function Update_Data($sql)
+{
+
+    if ($this->Database->Connect->query($sql) == true) {
+          echo '<script> 
+          Swal.fire({
+  title: "تم الإبلاغ بنجاح!",
+  text: "من فضلك قم بنقر على موافق",
+  type: "success",
+  confirmButtonClass: "btn btn-primary",
+  buttonsStyling: false,
+});
+</script>';           
+     } else {
+         echo '<script>
+        Swal.fire({
+  type: "error",
+  title: "error...",
+  text: "هناك خطأ ما!",
+  confirmButtonClass: "btn btn-primary",
+  buttonsStyling: true,
+})
+</script>'
+;
+    }
+}
+public function Delete_Data($id)
+{
+
+    $sql_DELETE = "DELETE FROM `ratings` WHERE `rating_id` = '$id'  ";
+  
+
+    if ($this->Database->Connect->query($sql_DELETE) == true) {
+                    echo '<script> 
+ Swal.fire({
+    title: "تم الحذف بنجاح!",
+    text: "من فضلك قم بنقر على موافق",
+    type: "success",
+    confirmButtonClass: "btn btn-primary",
+    buttonsStyling: false,
+});
+</script>';
+ 
+    } else {
+        echo '<script>
+        Swal.fire({
+  type: "error",
+  title: "error...",
+  text: "هناك خطأ ما!",
+  confirmButtonClass: "btn btn-primary",
+  buttonsStyling: true,
+})
+</script>'
+;
+    }
+    
+}
+
+
 
 }

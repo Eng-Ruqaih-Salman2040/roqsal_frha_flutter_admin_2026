@@ -83,6 +83,7 @@
 				
 				    them = 1;
                     break;
+                    
             }
 	
 /*	if(them==0){

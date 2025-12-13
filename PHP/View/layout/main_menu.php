@@ -89,7 +89,7 @@ fa-hospital-o"></i><span class="menu-title" data-i18n="User">جميع الحجو
 		      echo '<li class="';
 		      active("rating");
               echo' nav-item"><a href="?page1=rating"><i class="fa 
-fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">تقيماتي</span></a>
+			  fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">تقيماتي</span></a>
                 </li>';
 				}?>  
          

@@ -8,4 +8,5 @@
    // @$NumberOfusers = 1;
     
     include '../View/Dashboard.php';  
+    ?>
 

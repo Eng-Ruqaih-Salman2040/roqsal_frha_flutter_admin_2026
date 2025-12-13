@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2025 at 11:19 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Dec 13, 2025 at 05:28 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `ads` (
   `note` text NOT NULL,
   `date_create` varchar(255) NOT NULL,
   `time_create` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ads`
@@ -54,7 +54,7 @@ CREATE TABLE `bank_accounts` (
   `id` int(11) NOT NULL,
   `imge` text NOT NULL,
   `account_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bank_accounts`
@@ -76,23 +76,23 @@ CREATE TABLE `bank_accounts_user` (
   `shop_id` int(11) NOT NULL,
   `account_number` decimal(10,0) NOT NULL,
   `statues` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bank_accounts_user`
 --
 
 INSERT INTO `bank_accounts_user` (`id`, `bank_accounts_id`, `shop_id`, `account_number`, `statues`) VALUES
-(12, 1, 22, 123456, 1),
-(13, 5, 22, 456612, 1),
-(14, 1, 23, 4645646, 1),
-(15, 5, 23, 75756757, 1),
-(17, 1, 28, 778275575, 1),
-(18, 5, 28, 783816194, 1),
-(19, 5, 31, 9708798, 1),
-(20, 1, 31, 758587587, 0),
-(21, 1, 33, 7858657, 1),
-(22, 1, 27, 9875867, 1);
+(12, 1, 22, '123456', 1),
+(13, 5, 22, '456612', 1),
+(14, 1, 23, '4645646', 1),
+(15, 5, 23, '75756757', 1),
+(17, 1, 28, '778275575', 1),
+(18, 5, 28, '783816194', 1),
+(19, 5, 31, '9708798', 1),
+(20, 1, 31, '758587587', 0),
+(21, 1, 33, '7858657', 1),
+(22, 1, 27, '9875867', 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,7 @@ CREATE TABLE `city` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `statues` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `city`
@@ -130,7 +130,7 @@ CREATE TABLE `customers` (
   `date_register` varchar(255) NOT NULL,
   `error_password` int(11) NOT NULL DEFAULT 0,
   `activ` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customers`
@@ -160,7 +160,7 @@ CREATE TABLE `favorite` (
   `id` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
   `customers_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `favorite`
@@ -181,9 +181,9 @@ INSERT INTO `favorite` (`id`, `shop_id`, `customers_id`) VALUES
 CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
-  `file_name` varchar(255) NOT NULL,
+  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `uploaded_on` datetime NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '1'
+  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -207,7 +207,8 @@ INSERT INTO `gallery` (`id`, `shop_id`, `file_name`, `uploaded_on`, `status`) VA
 (43, 30, '4821-6.jpg', '2025-10-26 16:08:22', '1'),
 (44, 30, '4821-6.jpg', '2025-10-26 16:08:31', '1'),
 (45, 31, 'Lamborghini-SC18-2019-3-e1545194949867.jpg', '2025-10-27 00:46:36', '1'),
-(46, 27, 'فواكة.jpg', '2025-11-26 19:34:59', '1');
+(46, 27, 'فواكة.jpg', '2025-11-26 19:34:59', '1'),
+(47, 24, '2639104.jpg', '2025-12-09 16:10:04', '1');
 
 -- --------------------------------------------------------
 
@@ -223,7 +224,7 @@ CREATE TABLE `notifications` (
   `status` tinyint(1) NOT NULL,
   `date_create` varchar(255) NOT NULL,
   `time_create` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notifications`
@@ -245,23 +246,21 @@ CREATE TABLE `ratings` (
   `review_comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
-  `created_time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `reported` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ratings`
 --
 
-INSERT INTO `ratings` (`rating_id`, `rating_value`, `review_comment`, `customer_id`, `shop_id`, `created_time`) VALUES
-(2, 5, 'تجربة ممتازة', 5, 22, '2025-10-28 12:08:21'),
-(3, 5, 'تجربة ممتازة', 5, 22, '2025-10-28 12:08:26'),
-(4, 2, 'جلال جميل الحمادي', 25, 27, '2025-10-28 12:11:01'),
-(5, 2, 'جلال جميل الحمادي', 25, 27, '2025-10-28 12:11:07'),
-(6, 1, 'محمد عبد الواسع', 19, 30, '2025-10-28 12:12:03'),
-(7, 5, 'جيد جدا', 28, 30, '2025-11-26 14:00:35'),
-(8, 5, 'جيد جدا', 28, 30, '2025-11-26 14:00:47'),
-(9, 2, 'صلاحياتك', 28, 32, '2025-11-26 14:30:20'),
-(10, 2, 'OK', 20, 33, '2025-11-28 17:51:42');
+INSERT INTO `ratings` (`rating_id`, `rating_value`, `review_comment`, `customer_id`, `shop_id`, `created_time`, `reported`) VALUES
+(19, 2, 'الكنج', 28, 24, '2025-12-13 11:54:25', 1),
+(21, 2, 'علي ', 20, 24, '2025-12-13 11:55:22', 0),
+(22, 3, 'عبد الكريم', 23, 24, '2025-12-13 11:55:52', 0),
+(23, 3, 'محمد', 27, 24, '2025-12-13 11:56:41', 0),
+(24, 4, 'وسام', 20, 24, '2025-12-13 11:57:14', 0),
+(25, 2, 'احمد', 23, 24, '2025-12-13 11:57:58', 0);
 
 -- --------------------------------------------------------
 
@@ -278,7 +277,7 @@ CREATE TABLE `reservations` (
   `reservation_status` int(1) NOT NULL DEFAULT 0,
   `note` text NOT NULL,
   `bond_no` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `reservations`
@@ -302,7 +301,7 @@ CREATE TABLE `section` (
   `image` varchar(255) NOT NULL,
   `sort` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `section`
@@ -341,7 +340,7 @@ CREATE TABLE `shop` (
   `viewer` int(11) NOT NULL DEFAULT 0,
   `profession_license` varchar(255) NOT NULL,
   `section_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `shop`
@@ -350,16 +349,16 @@ CREATE TABLE `shop` (
 INSERT INTO `shop` (`id`, `user_name`, `password`, `name`, `city_id`, `address`, `email`, `phone`, `image`, `description`, `price`, `statues`, `layout_them`, `viewer`, `profession_license`, `section_id`) VALUES
 (22, 'h', '123456', 'حسين محب', 14, 'شارع كلية الطيران', 'hosin@gmail.com', 777777777, '123260.jpg', '																																																																																																																																															متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة																																																																																																																																															', 2147483647, 1, 0, 72, 'profession_license_239914.', 22),
 (23, 'h1', '123456', 'حمود السمه', 14, 'شارع خولان', 'h1@gmail.com', 777777777, '393432.jpg', 'متوفر في جميع ايام الأسبوع\r\n', 35000, 1, 1, 31, 'profession_license_915778.', 22),
-(24, 'm', '123456', 'محمد نبيل محب', 14, 'الحصبة', 'm@gmail.com', 777777777, '548146.jpg', 'متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة', 15000, 1, 1, 39, 'profession_license_403284.', 22),
+(24, 'm', '123456', 'محمد نبيل محب', 14, 'الحصبة', 'm@gmail.com', 777777777, '548146.jpg', '																																																																																																																																																																																																																																																																																																																																																																																																	متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة																																																																																																																																																																																																																																																																																																																																																																																																	', 15000, 1, 1, 39, 'profession_license_403284.', 22),
 (25, 'admin', '123456', 'كوشة جديد', 14, 'الحصبة', 'q@q.com', 777777777, '229980.jpg', '											جججج											', 10000, 1, 0, 5, 'profession_license_758863.', 28),
 (26, 'ruqaih salman', 'ruqsal123', 'gaaaat', 14, '', '', 0, '580642.png', '', 120000, 1, 1, 0, 'profession_license_25615.pdf', 1),
-(27, 'fanan', 'fanan123', '12347', 14, 'شملان', 'jalalwq@gmail.com', 0, '560959.jpg', '																																												', 40000, 1, 1, 1, 'profession_license_876022.pdf', 27),
+(27, 'fanan', 'fanan123', '12347', 14, 'شملان', 'jalalwq@gmail.com', 0, '560959.jpg', '																																																																																																																																																																																																																												', 40000, 2, 0, 1, 'profession_license_876022.pdf', 27),
 (28, 'jalal', '12345', 'كيك', 14, 'شملان', 'jalalwq@gmail.com', 0, 'default_image.png', '																																																																																																														', 2000000, 2, 1, 0, 'profession_license_868772.', 29),
 (29, 'jalal', '1234567', 'خيم اعراس', 14, 'taiz', 'Jalal@gmail.com', 0, '342200.jpg', '																																																																																																																																				', 2000000, 2, 1, 0, 'profession_license_292310.', 23),
 (30, 'hkr', 'jor123', 'خيم اعراس', 14, '', '', 0, 'default_image.png', '', 2147483647, 2, 1, 0, 'profession_license_92717.', 1),
 (31, 'جلال الحمادي', '7777777', 'فنان ', 14, 'شملان', 'Jalal@gmail.com', 0, 'default_image.png', '																																												', 200, 2, 1, 0, 'profession_license_749012.', 22),
-(32, 'name', '7777777', 'كيك', 14, '', '', 0, '780123.jpg', '', 0, 2, 1, 0, 'profession_license_182191.', 29),
-(33, 'mohmed', '12345', 'دعوات', 14, 'taiz', 'jalalwq@gmail.com', 0, '983126.jpg', '																																																																																								', 0, 2, 1, 0, 'profession_license_819353.', 24);
+(32, 'name', '7777777', 'كيك', 14, 'taiz', 'jalalalhamady60@gmail.com', 0, '780123.jpg', '																						', 0, 2, 0, 0, 'profession_license_182191.', 29),
+(33, 'mohmed', '12345', 'دعوات', 14, 'taiz', 'jalalwq@gmail.com', 0, '983126.jpg', '																																																																																																																																																																																																																																																																																																																																																																																																												', 0, 2, 0, 0, 'profession_license_819353.', 24);
 
 -- --------------------------------------------------------
 
@@ -376,7 +375,7 @@ CREATE TABLE `technical_support` (
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `date_create` varchar(255) NOT NULL,
   `time_create` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `technical_support`
@@ -410,7 +409,7 @@ CREATE TABLE `users` (
   `statues` tinyint(1) NOT NULL,
   `otp_code` int(11) NOT NULL,
   `layout_them` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -421,7 +420,7 @@ INSERT INTO `users` (`id_user`, `password`, `user_name`, `img_user`, `phone`, `e
 (138, '123456', 'admin', 'default_image.png', 0, '', '', '2022-07-23', 1, 0, 0, 0),
 (139, '123456', 'admin', 'default_image.png', 657, 'fdgdg', '', '2022-07-23', 1, 0, 0, 0),
 (140, '123456', 'admin', 'default_image.png', 0, '', '', '2022-07-23', 1, 0, 0, 0),
-(141, '123', 'hkr', '920340.jpg', 775432165, 'wessamaref25@gmail.com', '                                            jalal jmail                                          \r\n											', '2025-10-01', 1, 0, 0, 1);
+(141, '123', 'hkr', '920340.jpg', 775432165, 'wessamaref25@gmail.com', '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        jalal jmail                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											', '2025-10-01', 1, 0, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -567,7 +566,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -579,7 +578,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `reservations`

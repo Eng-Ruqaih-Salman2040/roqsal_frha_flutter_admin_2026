@@ -51,7 +51,7 @@ $sql="SELECT * FROM users WHERE  user_name='$user_name' and 		password='$passowr
 		    $_SESSION['phone'] =$row[4];
 		    $_SESSION['email'] =$row[5];
 		    $_SESSION['note'] =$row[6];
-		    $_SESSION['layout_them'] =$row[11];
+		    $_SESSION['layout_them'] =$row[12];
 			$_SESSION['validity'] ="1";
 			 
 	   return true;
@@ -69,11 +69,11 @@ $sql="SELECT * FROM shop WHERE  user_name='$user_name' and password='$passowrd'"
         $result = $this->Database->Connect->query($sql);
             if($row = $result -> fetch_row()){
 	
-   if($row[12]==="2"){
+   if($row[11]==="0"){
 	   	echo "<script>alert('لم يتم مراجعة ملف ترخيض مزاولة المهنه بعد للاستفسار يرجى الاتصال برقم 777777 وشكرا');</script>";
 	 return false;    
    }
-	 if($row[12]==="0"){
+	 if($row[11]==="0"){
 			echo "<script>alert('تم ايقاف حسابك للاستفسار يرجى الاتصال برقم 77777 وشكرا');</script>";
 	 
  return false; 
