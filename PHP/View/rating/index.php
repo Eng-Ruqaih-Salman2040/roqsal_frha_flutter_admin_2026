@@ -67,7 +67,13 @@
         <tr>
             <td><?= htmlspecialchars($rate['rating_id']) ?></td>
             <td><?= htmlspecialchars($rate['customer_name']) ?></td>
-            <td><?= htmlspecialchars($rate['rating_value']) ?>⭐⭐⭐</td>
+            <td>  <?php
+    $stars = intval($rate['rating_value']);
+    for ($i = 0; $i < $stars; $i++) {
+        echo "⭐";
+    }
+  ?>
+</td>
             <td><?= htmlspecialchars($rate['created_time']) ?></td>
             <td><?= htmlspecialchars($rate['review_comment']) ?></td>
             <?php
