@@ -1,6 +1,4 @@
-<?php
-// هذا الملف مشترك بين الإضافة والتعديل
-?>
+
 
 <!-- حقل مخفي للمعرف -->
 <input type="hidden" id="edit_id" name="id" value="">
@@ -25,6 +23,10 @@
         </span>
         <label>الحالة (نشط)</label>
     </div>
+</div>
+
+<div class="form-label-group">
+<input type="number" id="edit_rating_Admin" name="rating_Admin" class="form-control" placeholder="تقييم الخدمة" required>    <label for="edit_rating_Admin">تقييم الخدمة</label>
 </div>
 
 <div class="form-label-group">
@@ -66,7 +68,7 @@
     </div>
 </div>
 
-<!-- ✅ هذا هو الحقل المهم -->
+
 <div class="form-group">		  
     <label>القسم</label>
     <div class="controls">

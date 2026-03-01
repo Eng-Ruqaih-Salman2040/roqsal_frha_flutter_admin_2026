@@ -46,6 +46,7 @@ include('add.php');
                                                     <th>الشعار</th>
                                                     <th>الاسم</th>
                                                     <th>القسم</th>
+                                                    <th>تقييم مبدائي</th>
                                                     <th>رقم الجوال</th>
                                                     <th>البريد</th>
                                                     <th>السعر</th>
@@ -76,10 +77,11 @@ include('add.php');
                                                             <td><img style='height:35px; width:35px;' class='img_doc_display' src='../../image/shop/{$Display[$i]['image']}'></td>
                                                             <td>{$Display[$i]['name']}</td>
                                                             <td>{$Display[$i]['section_name']}</td>
+                                                            <td>{$Display[$i]['rating_Admin']}⭐</td>
                                                             <td>{$Display[$i]['phone']}</td>
                                                             <td>{$Display[$i]['email']}</td>
                                                             <td>{$Display[$i]['price']}</td>
-                                                            <td><a href='../../pdf/profession_license/{$Display[$i]['profession_license']}' target='_blank'><button type='button' class='btn btn-outline-success mr-1 mb-1'>عرض</button></a></td>
+                                                            <td><a href='https://localhost:81/C:/xampp/htdocs/roqsal_frha_flutter_admin_2026/pdf/profession_license/{$Display[$i]['profession_license']}' target='_blank'><button type='button' class='btn btn-outline-success mr-1 mb-1'>عرض</button></a></td>
                                                             <td>{$statues}</td>
                                                             <td>
                                                                 <div class='btn-group btn-group-sm'>
@@ -91,6 +93,7 @@ include('add.php');
                                                                         data-user_name='{$Display[$i]['user_name']}'
                                                                         data-password='{$Display[$i]['password']}'
                                                                         data-section_id='{$Display[$i]['section_id']}'
+                                                                        data-rating_Admin='{$Display[$i]['rating_Admin']}'
                                                                         data-city_id='{$Display[$i]['city_id']}'
                                                                         data-address='{$Display[$i]['address']}'
                                                                         data-name='{$Display[$i]['name']}'
@@ -144,6 +147,7 @@ function dispalyData(elem) {
     var description = $(elem).data('description');
     var address = $(elem).data('address');
     var statues = $(elem).data('statues');
+    var rating_Admin = $(elem).data('rating_admin');  
     
     // للتأكد من البيانات
     console.log("البيانات المستلمة:", {
@@ -162,7 +166,9 @@ function dispalyData(elem) {
     $("#edit_email").val(email);
     $("#edit_price").val(price);	 
     $("#edit_description").val(description);	  
-    $("#edit_address").val(address);	 
+    $("#edit_address").val(address);
+    $("#edit_rating_Admin").val(rating_Admin);	 
+   	 
 
     // تعبئة المدينة
     if ($('#edit_city_id').length > 0) {

@@ -136,17 +136,43 @@ class M_bank_accounts_user
         buttonsStyling: false,
     });
 	</script>';  
-        } else {
-            echo '<script>
-			Swal.fire({
-      type: "error",
-      title: "error...",
-      text: "هناك خطأ ما!",
-      confirmButtonClass: "btn btn-primary",
-      buttonsStyling: true,
-    })
-	</script>'
-	;
+        } else{
+        $error = $this->Database->Connect->error;
+        
+        // استخراج اسم الجدول المرتبط
+        $related_table = "غير معروف";
+        if (preg_match('/`(\w+)`.*?FOREIGN KEY/', $error, $matches)) {
+            $related_table = $matches[1];
+        } elseif (preg_match('/REFERENCES `(\w+)`/', $error, $matches)) {
+            $related_table = $matches[1];
+        }
+        
+        // ترجمة اسم الجدول
+        $table_translations = [
+            'roqsa_frha_2026' => 'حسابات بنكية',
+            'sections' => 'الأقسام',
+            'orders' => 'الطلبات',
+            'products' => 'المنتجات',
+            'users' => 'المستخدمين',
+            'employees' => 'الموظفين',
+            'bank_accounts' => 'الحسابات البنكية'
+        ];
+        
+        $table_ar = isset($table_translations[$related_table]) ? $table_translations[$related_table] : $related_table;
+        
+        // رسالة الخطأ المبسطة
+        $error_message = "لا يمكن الحذف: هذا المتجر مرتبط بجدول <strong>$table_ar</strong>. قم بحذف البيانات المرتبطة أولاً.";
+        
+        echo '<script>
+        Swal.fire({
+            icon: "error",
+            title: "خطأ في الحذف!",
+            html: "' . addslashes($error_message) . '",
+            confirmButtonClass: "btn btn-primary",
+            buttonsStyling: true,
+            confirmButtonText: "فهمت"
+        });
+        </script>';
     }
 
     }

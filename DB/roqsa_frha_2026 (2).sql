@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2025 at 05:28 PM
+-- Generation Time: Mar 01, 2026 at 07:51 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -84,7 +84,6 @@ CREATE TABLE `bank_accounts_user` (
 
 INSERT INTO `bank_accounts_user` (`id`, `bank_accounts_id`, `shop_id`, `account_number`, `statues`) VALUES
 (12, 1, 22, '123456', 1),
-(13, 5, 22, '456612', 1),
 (14, 1, 23, '4645646', 1),
 (15, 5, 23, '75756757', 1),
 (17, 1, 28, '778275575', 1),
@@ -260,7 +259,9 @@ INSERT INTO `ratings` (`rating_id`, `rating_value`, `review_comment`, `customer_
 (22, 3, 'عبد الكريم', 23, 24, '2025-12-13 11:55:52', 0),
 (23, 3, 'محمد', 27, 24, '2025-12-13 11:56:41', 0),
 (24, 4, 'وسام', 20, 24, '2025-12-13 11:57:14', 0),
-(25, 2, 'احمد', 23, 24, '2025-12-13 11:57:58', 0);
+(25, 2, 'احمد', 23, 24, '2025-12-13 11:57:58', 0),
+(26, 5, 'مليح', 5, 31, '2026-02-22 21:48:55', 0),
+(27, 2, 'خيبه', 25, 31, '2026-02-22 21:49:46', 0);
 
 -- --------------------------------------------------------
 
@@ -284,8 +285,8 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`id`, `bank_accounts_user_id`, `shop_id`, `customers_id`, `booking_date`, `reservation_status`, `note`, `bond_no`) VALUES
-(24, 14, 22, 19, '2022-06-25', 1, 'وااا', 555887),
-(25, 12, 22, 5, '2022-06-27', 1, 'sdfsdfsdfsdfsdf', 5464646),
+(24, 14, 22, 19, '2022-06-25', 2, 'وااا', 555887),
+(25, 12, 22, 5, '2022-06-27', 2, 'sdfsdfsdfsdfsdf', 5464646),
 (26, 12, 22, 5, '2022-07-06', 2, 'qw2323', 34534535),
 (27, 14, 23, 26, '2022-08-06', 1, 'hh', 4353453);
 
@@ -338,27 +339,26 @@ CREATE TABLE `shop` (
   `statues` int(11) NOT NULL DEFAULT 0,
   `layout_them` int(11) NOT NULL DEFAULT 1,
   `viewer` int(11) NOT NULL DEFAULT 0,
-  `profession_license` varchar(255) NOT NULL,
-  `section_id` int(11) NOT NULL
+  `profession_license` varchar(500) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `rating_Admin` double UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `shop`
 --
 
-INSERT INTO `shop` (`id`, `user_name`, `password`, `name`, `city_id`, `address`, `email`, `phone`, `image`, `description`, `price`, `statues`, `layout_them`, `viewer`, `profession_license`, `section_id`) VALUES
-(22, 'h', '123456', 'حسين محب', 14, 'شارع كلية الطيران', 'hosin@gmail.com', 777777777, '123260.jpg', '																																																																																																																																															متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة																																																																																																																																															', 2147483647, 1, 0, 72, 'profession_license_239914.', 22),
-(23, 'h1', '123456', 'حمود السمه', 14, 'شارع خولان', 'h1@gmail.com', 777777777, '393432.jpg', 'متوفر في جميع ايام الأسبوع\r\n', 35000, 1, 1, 31, 'profession_license_915778.', 22),
-(24, 'm', '123456', 'محمد نبيل محب', 14, 'الحصبة', 'm@gmail.com', 777777777, '548146.jpg', '																																																																																																																																																																																																																																																																																																																																																																																																	متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة																																																																																																																																																																																																																																																																																																																																																																																																	', 15000, 1, 1, 39, 'profession_license_403284.', 22),
-(25, 'admin', '123456', 'كوشة جديد', 14, 'الحصبة', 'q@q.com', 777777777, '229980.jpg', '											جججج											', 10000, 1, 0, 5, 'profession_license_758863.', 28),
-(26, 'ruqaih salman', 'ruqsal123', 'gaaaat', 14, '', '', 0, '580642.png', '', 120000, 1, 1, 0, 'profession_license_25615.pdf', 1),
-(27, 'fanan', 'fanan123', '12347', 14, 'شملان', 'jalalwq@gmail.com', 0, '560959.jpg', '																																																																																																																																																																																																																												', 40000, 2, 0, 1, 'profession_license_876022.pdf', 27),
-(28, 'jalal', '12345', 'كيك', 14, 'شملان', 'jalalwq@gmail.com', 0, 'default_image.png', '																																																																																																														', 2000000, 2, 1, 0, 'profession_license_868772.', 29),
-(29, 'jalal', '1234567', 'خيم اعراس', 14, 'taiz', 'Jalal@gmail.com', 0, '342200.jpg', '																																																																																																																																				', 2000000, 2, 1, 0, 'profession_license_292310.', 23),
-(30, 'hkr', 'jor123', 'خيم اعراس', 14, '', '', 0, 'default_image.png', '', 2147483647, 2, 1, 0, 'profession_license_92717.', 1),
-(31, 'جلال الحمادي', '7777777', 'فنان ', 14, 'شملان', 'Jalal@gmail.com', 0, 'default_image.png', '																																												', 200, 2, 1, 0, 'profession_license_749012.', 22),
-(32, 'name', '7777777', 'كيك', 14, 'taiz', 'jalalalhamady60@gmail.com', 0, '780123.jpg', '																						', 0, 2, 0, 0, 'profession_license_182191.', 29),
-(33, 'mohmed', '12345', 'دعوات', 14, 'taiz', 'jalalwq@gmail.com', 0, '983126.jpg', '																																																																																																																																																																																																																																																																																																																																																																																																												', 0, 2, 0, 0, 'profession_license_819353.', 24);
+INSERT INTO `shop` (`id`, `user_name`, `password`, `name`, `city_id`, `address`, `email`, `phone`, `image`, `description`, `price`, `statues`, `layout_them`, `viewer`, `profession_license`, `section_id`, `rating_Admin`) VALUES
+(22, 'h', '123456', 'حسين محب', 14, 'شارع كلية الطيران', 'hosin@gmail.com', 777777777, '123260.jpg', '																																																																																																																																															متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة																																																																																																																																															', 2147483647, 1, 0, 72, 'profession_license_239914.pdf', 22, 5),
+(23, 'h1', '123456', 'حمود السمه', 14, 'شارع خولان', 'h1@gmail.com', 777777777, '393432.jpg', 'متوفر في جميع ايام الأسبوع\r\n', 35000, 1, 1, 31, 'profession_license_915778.pdf', 22, 2),
+(24, 'm', '123456', 'محمد نبيل محب', 14, 'الحصبة', 'm@gmail.com', 777777777, '548146.jpg', '																																																																																																																																																																																																																																																																																																																																																																																																	متاح في الايام التالية\r\nالاربعاء,الخميس, الجمعة																																																																																																																																																																																																																																																																																																																																																																																																	', 15000, 0, 1, 39, 'profession_license_403284.pdf', 22, 5),
+(25, 'admin', '123456', 'كوشة جديد', 14, 'الحصبة', 'q@q.com', 777777777, '229980.jpg', '											جججج											', 10000, 1, 0, 5, 'profession_license_758863.pdf', 28, 3.2),
+(27, 'fanan', 'fanan123', '12347', 14, 'شملان', 'jalalwq@gmail.com', 0, '560959.jpg', '																																																																																																																																																																																																																												', 40000, 0, 0, 1, 'profession_license_876022.pdf', 27, NULL),
+(28, 'jalal', '12345', 'كيك', 14, 'شملان', 'jalalwq@gmail.com', 0, 'default_image.png', '																																																																																																														', 2000000, 1, 1, 0, 'profession_license_868772.pdf', 29, 2),
+(29, 'jalal', '1234567', 'خيم اعراس', 14, 'صنعاء', 'Jalal@gmail.com', 0, '342200.jpg', '																																																																																																																																				', 2000000, 0, 1, 0, 'profession_license_292310.pdf', 23, NULL),
+(30, 'hkr', 'jor123', 'خيم اعراس', 14, '', '', 0, 'default_image.png', '', 2147483647, 1, 1, 0, 'profession_license_92717.pdf', 1, NULL),
+(31, 'جلال الحمادي', '7777777', 'فنان ', 14, 'شملان', 'Jalal@gmail.com', 0, 'default_image.png', '																																												', 200, 1, 1, 0, 'profession_license_749012.pdf', 22, 2),
+(33, 'mohmed', '12345', 'دعوات', 14, 'taiz', 'jalalwq@gmail.com', 0, '983126.jpg', '																																																																																																																																																																																																																																																																																																																																																																																																												', 0, 1, 0, 0, 'profession_license_819353.pdf', 24, 5);
 
 -- --------------------------------------------------------
 
@@ -420,7 +420,7 @@ INSERT INTO `users` (`id_user`, `password`, `user_name`, `img_user`, `phone`, `e
 (138, '123456', 'admin', 'default_image.png', 0, '', '', '2022-07-23', 1, 0, 0, 0),
 (139, '123456', 'admin', 'default_image.png', 657, 'fdgdg', '', '2022-07-23', 1, 0, 0, 0),
 (140, '123456', 'admin', 'default_image.png', 0, '', '', '2022-07-23', 1, 0, 0, 0),
-(141, '123', 'hkr', '920340.jpg', 775432165, 'wessamaref25@gmail.com', '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        jalal jmail                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											', '2025-10-01', 1, 0, 0, 1);
+(141, '123', 'hkr', '920340.jpg', 775432165, 'wessamaref25@gmail.com', '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                jalal jmail                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											                                          \r\n											', '2025-10-01', 1, 0, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -578,7 +578,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `reservations`
@@ -596,7 +596,7 @@ ALTER TABLE `section`
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `technical_support`
