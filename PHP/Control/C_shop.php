@@ -175,7 +175,6 @@ if ($_POST) {
             @$Display_section = $M_shop->Read_Data_section();
             include '../View/shop/index.php';
         } else {
-            // ✅ تم التعديل هنا: إزالة علامات الاقتباس الفردية من حول rating_Admin و section_id
             $sql = "UPDATE `shop` SET  
                     `user_name` = '$user_name',
                     `password` = '$password',

@@ -57,7 +57,7 @@
 			    <th> تاريخ التقييم </th>
 			    <th> ملاحظة التقييم </th>
                 <?php if (isset($_SESSION['validity']) && $_SESSION['validity'] === "1") {  echo" <th> حذف </th>";}?>
-                <?php if (isset($_SESSION['validity']) && $_SESSION['validity'] === "0") {  echo" <th> إبلاغ </th>";}?>
+                
 			    
                                                     </tr>
                                                 </thead>
@@ -96,22 +96,7 @@ onclick='return confirm(\"Do you want to delete?\");'>
 </form>
 </td>";
 } else {
-if (isset($_SESSION['getId_User'])) {
-echo "<td>
-    <div class='btn-group btn-group-sm'>
 
-        <button data-toggle='modal' data-target='#modal_edit'
-            data-placement='bottom' title='إبلاغ' class='btn btn-link'
-            onclick='dispalyData(this)' 
-            data-id='{$rate['rating_id']}'
-            data-comment=\"{$rate['review_comment']}\">
-            <i class='fa fa-edit'></i>
-        </button>
-    </div>
-</td>";
-} else {
-die("⚠ غير مسموح لك بالوصول إلى هذه الصفحة");
-}
 }
 ?>
 
@@ -131,7 +116,6 @@ die("⚠ غير مسموح لك بالوصول إلى هذه الصفحة");
 			    <th> تاريخ التقييم </th>
 			    <th> ملاحظة التقييم </th>
                 <?php if (isset($_SESSION['validity']) && $_SESSION['validity'] === "1") {  echo" <th> حذف </th>";}?>
-                <?php if (isset($_SESSION['validity']) && $_SESSION['validity'] === "0") {  echo" <th> إبلاغ </th>";}?>
 			    
                                                     </tr>
 </tfoot>

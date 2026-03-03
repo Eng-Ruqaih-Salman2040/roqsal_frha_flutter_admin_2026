@@ -49,14 +49,14 @@
 				if($_SESSION['validity']==="1"){
 		      echo '<li class="';
 		      active("City");
-              echo' nav-item"><a href="?page1=City"><i class="feather icon-command"></i><span class="menu-title" data-i18n="User">المدن</span></a>
+              echo' nav-item"><a href="?page1=City"><i class="fa fa-map-marker"></i><span class="menu-title" data-i18n="User">المدن</span></a>
                 </li>';
 				}?>
 									<?php 
 				if($_SESSION['validity']==="1"){
 		      echo '<li class="';
 		      active("section");
-              echo' nav-item"><a href="?page1=section"><i class="feather icon-command"></i><span class="menu-title" data-i18n="User">الأقسام</span></a>
+              echo' nav-item"><a href="?page1=section"><i class="fa fa-tags"></i><span class="menu-title" data-i18n="User">الأقسام</span></a>
                 </li>';
 				}?>
 				 	<?php 
@@ -64,7 +64,7 @@
 		      echo '<li class="';
 		      active("shop");
               echo' nav-item"><a href="?page1=shop"><i class="fa 
-fa-hospital-o"></i><span class="menu-title" data-i18n="User">الاصناف</span></a>
+fa-calendar"></i><span class="menu-title" data-i18n="User">الخدمات</span></a>
                 </li>';
 				}?>
 			 	<?php 
@@ -72,7 +72,7 @@ fa-hospital-o"></i><span class="menu-title" data-i18n="User">الاصناف</spa
 		      echo '<li class="';
 		      active("bank_accounts");
               echo' nav-item"><a href="?page1=bank_accounts"><i class="fa 
-fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">الحسابات</span></a>
+fa-bank"></i><span class="menu-title" data-i18n="User">الحسابات</span></a>
                 </li>';
 				}?>
 			
@@ -81,7 +81,7 @@ fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">الحسابات
 		      echo '<li class="';
 		      active("reservations_3");
               echo' nav-item"><a href="?page1=reservations_3"><i class="fa 
-fa-hospital-o"></i><span class="menu-title" data-i18n="User">جميع الحجوزات</span></a>
+fa-ticket"></i><span class="menu-title" data-i18n="User">جميع الحجوزات</span></a>
                 </li>';
 				}?>
                    	<?php 
@@ -89,7 +89,7 @@ fa-hospital-o"></i><span class="menu-title" data-i18n="User">جميع الحجو
 		      echo '<li class="';
 		      active("rating");
               echo' nav-item"><a href="?page1=rating"><i class="fa 
-			  fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">تقيماتي</span></a>
+			  fa-star"></i><span class="menu-title" data-i18n="User">تقيماتي</span></a>
                 </li>';
 				}?>  
          
@@ -98,7 +98,7 @@ fa-hospital-o"></i><span class="menu-title" data-i18n="User">جميع الحجو
 		      echo '<li class="';
 		      active("technical_support");
               echo' nav-item"><a href="?page1=technical_support"><i class="fa 
-fa-paper-plane"></i><span class="menu-title" data-i18n="User">الدعم الفني</span></a>
+fa-comments"></i><span class="menu-title" data-i18n="User">الدعم الفني</span></a>
                 </li>';
 				}?>
 				 	<?php 
@@ -114,7 +114,7 @@ fa-bell"></i><span class="menu-title" data-i18n="User">اشعارات التطب
 		      echo '<li class="';
 		      active("ads");
               echo' nav-item"><a href="?page1=ads"><i class="fa 
-fa-buysellads"></i><span class="menu-title" data-i18n="User">اعلانات التطبيق</span></a>
+fa-bullhorn"></i><span class="menu-title" data-i18n="User">اعلانات التطبيق</span></a>
                 </li>';
 				}?>
 				 
@@ -123,7 +123,7 @@ fa-buysellads"></i><span class="menu-title" data-i18n="User">اعلانات ال
 		      echo '<li class="';
 		      active("gallery");
               echo' nav-item"><a href="?page1=gallery"><i class="fa 
-fa-image"></i><span class="menu-title" data-i18n="User">صور الصنف</span></a>
+fa-image"></i><span class="menu-title" data-i18n="User">صور الخدمة</span></a>
                 </li>';
 				}?> 
                	<?php 
@@ -157,7 +157,7 @@ fa-hospital-o"></i><span class="menu-title" data-i18n="User">حجوزات مؤك
 		      echo '<li class="';
 		      active("bank_accounts_user");
               echo' nav-item"><a href="?page1=bank_accounts_user"><i class="fa 
-fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">حساباتي</span></a>
+fa-bank"></i><span class="menu-title" data-i18n="User">حساباتي</span></a>
                 </li>';
 				}?>
 					<?php 
@@ -165,7 +165,7 @@ fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">حساباتي</
 		      echo '<li class="';
 		      active("rating");
               echo' nav-item"><a href="?page1=rating"><i class="fa 
-fa-cc-mastercard"></i><span class="menu-title" data-i18n="User">تقيماتي</span></a>
+			  fa-star"></i><span class="menu-title" data-i18n="User">تقيماتي</span></a>
                 </li>';
 				}?>
 				

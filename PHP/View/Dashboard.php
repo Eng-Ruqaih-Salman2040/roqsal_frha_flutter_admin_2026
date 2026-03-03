@@ -38,7 +38,7 @@
                                             <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1 mb-25">92</h2>
+                                    <h2 class="text-bold-700 mt-1 mb-25"><?php echo $NumberOf_customers; ?></h2>
                                     <p class="mb-0">عدد مستخدمين التطبيق</p>
                                 </div>
                                 <div class="card-content">
@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1 mb-25"><?php echo $NumberOf_shop; ?></h2>
-                                    <p class="mb-0">عدد الاصناف</p>
+                                    <p class="mb-0">عدد الخدمات</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="orders-received-chart"></div>
@@ -91,7 +91,7 @@
                                     <h4 class="card-title">إجمالي الحجوزات</h4>
                                     <div class="dropdown chart-dropdown">
                                         <button class="btn btn-sm border-0 dropdown-toggle p-0" type="button" id="dropdownItem4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Last 7 Days
+                                            <!-- Last 7 Days -->
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem4">
                                             <a class="dropdown-item" href="#">Last 28 Days</a>
@@ -104,7 +104,7 @@
                                     <div class="card-body pt-0">
                                         <div class="row">
                                             <div class="col-sm-2 col-12 d-flex flex-column flex-wrap text-center">
-                                                <h1 class="font-large-2 text-bold-700 mt-2 mb-0">163</h1>
+                                                <h1 class="font-large-2 text-bold-700 mt-2 mb-0"><?php echo $NumberOf_reservations; ?></h1>
                                                 <small>الكل</small>
                                             </div>
                                             <div class="col-sm-10 col-12 d-flex justify-content-center">
@@ -114,15 +114,15 @@
                                         <div class="chart-info d-flex justify-content-between">
                                             <div class="text-center">
                                                 <p class="mb-50">جاهزة</p>
-                                                <span class="font-large-1">29</span>
+                                                <span class="font-large-1"><?php echo $NumberOf_reservations1; ?></span>
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-50">قيد الأنتظار</p>
-                                                <span class="font-large-1">63</span>
+                                                <span class="font-large-1"><?php echo $NumberOf_reservations3; ?></span>
                                             </div>
                                             <div class="text-center">
                                                 <p class="mb-50">مرفوضة</p>
-                                                <span class="font-large-1">69</span>
+                                                <span class="font-large-1"><?php echo $NumberOf_reservations2; ?></span>
                                             </div>
                                         </div>
                                     </div>
