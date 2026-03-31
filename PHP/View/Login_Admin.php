@@ -77,13 +77,14 @@
                                                         <label for="user-name">اسم المستخدم</label>
                                                     </fieldset>
 
-                                                    <fieldset class="form-label-group position-relative has-icon-left">
+                                                    <div class="input-group mb-1">
                                                         <input type="password" name="password" class="form-control" id="user-password" placeholder="كلمة المرور" required>
-                                                        <div class="form-control-position">
-                                                            <i class="feather icon-lock"></i>
+                                                        <div class="input-group-append">
+                                                            <div class="input-group-text">
+                                                                <input type="checkbox" id="showPassword" onclick="togglePassword()" title="إظهار كلمة المرور">
+                                                            </div>
                                                         </div>
-                                                        <label for="user-password">كلمة المرور</label>
-                                                    </fieldset>
+                                                    </div>
                                                     <div class="form-group d-flex justify-content-between align-items-center">
                                                         <div class="text-left">
                                                             <fieldset class="checkbox">
@@ -98,10 +99,10 @@
                                                                 </div>
                                                             </fieldset>
                                                         </div>
-                                                        <div class="text-right"><a href="auth-forgot-password.html" class="card-link">هل نسيت كلمة السر؟</a></div>
                                                     </div>
-                                                    
-                                                    <button type="submit" name="login" value="login" class="btn btn-primary float-right btn-inline">تسجيل الدخول</button>
+                                                    <div class="d-flex justify-content-center mt-2">
+                                                        <button type="submit" name="login" value="login" class="btn btn-primary btn-block" style="max-width:220px;">تسجيل الدخول</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -121,6 +122,14 @@
     </div>
     <!-- END: Content-->
 
+
+    <script>
+    function togglePassword() {
+        var passwordField = document.getElementById("user-password");
+        var checkbox = document.getElementById("showPassword");
+        passwordField.type = checkbox.checked ? "text" : "password";
+    }
+    </script>
 
     <!-- BEGIN: Vendor JS-->
     <script src="../../app-assets/vendors/js/vendors.min.js"></script>

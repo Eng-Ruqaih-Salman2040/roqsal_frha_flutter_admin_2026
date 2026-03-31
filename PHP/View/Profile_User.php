@@ -97,7 +97,7 @@
                                                         <select name="layout_them" onchange="myFunction1()" class="form-control">
 														<?php
 //echo "dark-layout";
-if($_SESSION['layout_them']==="1"){
+if($_SESSION['layout_them'] == 1){
       echo "<option value='0' >light</option>";
 	  echo "<option value='1' selected>dark</option>";
 }else{
@@ -154,12 +154,10 @@ if($_SESSION['layout_them']==="1"){
                                                   
                                                                                                  
 			                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-																			      <form method="POST" action="dashboard_Admin.php?page1=User" enctype="multipart/form-data" role="form" novalidate>
-							
-                                                    <button type="submit" name="Update" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">
+                                                    <button type="submit" name="Update" form="myForm" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">
 													حفظ التغيير
                                                    </button>
-												     <button type="reset"  onclick="myFunction()" class="btn btn-outline-warning">Reset</button>
+												     <button type="reset" onclick="myFunction()" class="btn btn-outline-warning">Reset</button>
                                                 </div>
                                             </div>
                                         </form>
