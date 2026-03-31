@@ -1,0 +1,47 @@
+TABLE: shop
+ - id
+ - user_name
+ - password
+ - name
+ - city_id
+ - address
+ - email
+ - phone
+ - image
+ - description
+ - price
+ - statues
+ - layout_them
+ - viewer
+ - profession_license
+ - section_id
+ - rating_Admin
+TABLE: city
+ - id
+ - name
+ - statues
+TABLE: section
+ - id
+ - name
+ - image
+ - sort
+ - status
+TABLE: bank_accounts
+ - id
+ - imge
+ - account_name
+TABLE: Technical_Support
+ - id
+ - name
+ - email
+ - subject
+ - message
+ - status
+ - date_create
+ - time_create
+TABLE: ads
+ - id
+ - imge
+ - note
+ - date_create
+ - time_create
