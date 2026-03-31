@@ -72,7 +72,16 @@
 		    $_SESSION['description'] =$description;
      		$_SESSION['layout_them'] =$layout_them;
 		    $_SESSION['address'] =$address;
-			
+
+            // تطبيق الثيم فوراً بدون تحديث الصفحة
+            echo '<script>
+                var b = document.getElementsByTagName("body")[0];
+                if ("'.$layout_them.'" == "1") {
+                    b.classList.add("dark-layout");
+                } else {
+                    b.classList.remove("dark-layout");
+                }
+            </script>';
    }
 	@$city = $M_shop->Read_Data_city();
 	
