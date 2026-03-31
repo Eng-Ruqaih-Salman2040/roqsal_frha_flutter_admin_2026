@@ -75,6 +75,14 @@ fa-calendar"></i><span class="menu-title" data-i18n="User">الخدمات</span>
 fa-bank"></i><span class="menu-title" data-i18n="User">الحسابات</span></a>
                 </li>';
 				}?>
+				  	<?php 
+				if($_SESSION['validity']==="1"){
+		      echo '<li class="';
+		      active("reservations");
+              echo' nav-item"><a href="?page1=reservations"><i class="fa 
+fa-hospital-o"></i><span class="menu-title" data-i18n="User">حجوزات جديدة</span></a>
+                </li>';
+				}?>
 			
  						        	<?php 
 				if($_SESSION['validity']==="1"){
@@ -134,6 +142,7 @@ fa-image"></i><span class="menu-title" data-i18n="User">صور الخدمة</spa
 fa-hospital-o"></i><span class="menu-title" data-i18n="User">حجوزات جديدة</span></a>
                 </li>';
 				}?>
+			
 				
 				        	<?php 
 				if($_SESSION['validity']==="0"){

@@ -44,6 +44,14 @@
     <input type="number" id="edit_price" name="price" class="form-control" placeholder="سعر الحجز" required>
     <label for="edit_price">سعر الحجز</label>
 </div>
+<div class="form-label-group">
+    <input type="number" id="edit_cut" name="cut" class="form-control" placeholder="مبلغ العربون" required>
+    <label for="edit_cut">مبلغ العربون</label>
+</div>
+<div class="form-label-group">
+    <input type="text" id="edit_latlng" name="latlng" class="form-control" placeholder="احداثيات الموقع" required>
+    <label for="edit_latlng">احداثيات الموقع</label>
+</div>
 
 <div class="custom-file">
     <input type="file" name="url_profession_license" accept=".pdf" class="custom-file-input" id="edit_url_profession_license">

@@ -1,7 +1,7 @@
                      <input type="hidden" id="id" name="id">                                      
 			 <div class="form-group">
                                             <label>الاشعار</label>
-                                            <textarea class="form-control"  id="note" name="note" placeholder=" الاشعار" rows="5"></textarea>
+                                            <textarea class="form-control"  id="note" name="note" placeholder=" الاشعار" rows="5" required></textarea>
                                         </div>  
 				
                    <script type="text/javascript">

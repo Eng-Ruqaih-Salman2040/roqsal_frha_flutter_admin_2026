@@ -22,10 +22,14 @@ class M_bank_accounts
         }
     }
 
-    public function Insert_Data($imge, $account_name)
+    public function Insert_Data($imge, $account_name, $number_bank_accounts)
     {
-        $sql_Insert="INSERT INTO `bank_accounts` (`id`, `imge`, `account_name`)
-        VALUES ('null', '$imge','$account_name') ";
+        if (isset($_SESSION['getId_User']) && !empty($_SESSION['getId_User'])) {
+        
+            // رقم الأدمن من الجلسة
+            $A_id = $_SESSION['getId_User'];
+        $sql_Insert = "INSERT INTO `bank_accounts` (`id`, `imge`, `account_name`, `number_bank_accounts`,`A_id`) 
+        VALUES (NULL, '$imge', '$account_name', '$number_bank_accounts','$A_id')";
 
  
 
@@ -51,7 +55,7 @@ class M_bank_accounts
     })
 	</script>';
         }
-    }
+    }}
 
     public function Update_Data($sql)
     {

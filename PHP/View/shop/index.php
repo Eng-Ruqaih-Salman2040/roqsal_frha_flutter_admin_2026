@@ -50,6 +50,8 @@ include('add.php');
                                                     <th>رقم الجوال</th>
                                                     <th>البريد</th>
                                                     <th>السعر</th>
+                                                    <th>مبلغ العربون</th>
+                                                    <th>احداثيات الموقع</th>
                                                     <th>الترخيص</th>
                                                     <th>الحالة</th>
                                                     <th>العمليات</th>
@@ -81,6 +83,8 @@ include('add.php');
                                                             <td>{$Display[$i]['phone']}</td>
                                                             <td>{$Display[$i]['email']}</td>
                                                             <td>{$Display[$i]['price']}</td>
+                                                            <td>{$Display[$i]['cut']}</td>
+                                                            <td>{$Display[$i]['latlng']}</td>
                                                             <td><a href='https://localhost:81/C:/xampp/htdocs/roqsal_frha_flutter_admin_2026/pdf/profession_license/{$Display[$i]['profession_license']}' target='_blank'><button type='button' class='btn btn-outline-success mr-1 mb-1'>عرض</button></a></td>
                                                             <td>{$statues}</td>
                                                             <td>
@@ -100,6 +104,8 @@ include('add.php');
                                                                         data-phone='{$Display[$i]['phone']}'
                                                                         data-email='{$Display[$i]['email']}'
                                                                         data-price='{$Display[$i]['price']}'
+                                                                        data-cut='{$Display[$i]['cut']}'
+                                                                        data-latlng='{$Display[$i]['latlng']}'
                                                                         data-description='{$Display[$i]['description']}'
                                                                         data-statues='{$Display[$i]['statues']}'>
                                                                         <i class='fa fa-edit'></i>
@@ -119,6 +125,24 @@ include('add.php');
                                                 }
                                                 ?>			
                                             </tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th>الرقم</th>
+                                                    <th>اسم المستخدم</th>
+                                                    <th>الشعار</th>
+                                                    <th>الاسم</th>
+                                                    <th>القسم</th>
+                                                    <th>تقييم مبدائي</th>
+                                                    <th>رقم الجوال</th>
+                                                    <th>البريد</th>
+                                                    <th>السعر</th>
+                                                    <th>مبلغ العربون</th>
+                                                    <th>احداثيات الموقع</th>
+                                                    <th>الترخيص</th>
+                                                    <th>الحالة</th>
+                                                    <th>العمليات</th>
+                                                </tr>
+                                            </thead>
                                         </table>
                                     </div>
                                 </div>
@@ -148,6 +172,8 @@ function dispalyData(elem) {
     var address = $(elem).data('address');
     var statues = $(elem).data('statues');
     var rating_Admin = $(elem).data('rating_admin');  
+    var cut = $(elem).data('cut');  
+    var latlng = $(elem).data('latlng');  
     
     // للتأكد من البيانات
     console.log("البيانات المستلمة:", {
@@ -168,6 +194,8 @@ function dispalyData(elem) {
     $("#edit_description").val(description);	  
     $("#edit_address").val(address);
     $("#edit_rating_Admin").val(rating_Admin);	 
+    $("#edit_cut").val(cut);	 
+    $("#edit_latlng").val(latlng);	 
    	 
 
     // تعبئة المدينة

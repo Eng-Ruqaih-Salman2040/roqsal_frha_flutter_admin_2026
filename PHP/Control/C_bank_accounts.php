@@ -39,7 +39,9 @@ if ($_POST) {
     // حفظ البيانات
     if (isset($_POST['Add'])) {
             $account_name = $_POST['account_name'];
+            $number_bank_accounts= $_POST['number_bank_accounts'];
 $MSG_imge=checkImge();
+  
            
           
         
@@ -49,7 +51,7 @@ $MSG_imge=checkImge();
                 $M_bank_accounts = new M_bank_accounts();
 		 
                	 if ($MSG_imge[0]==="") {
-    $M_bank_accounts->Insert_Data($MSG_imge[1], $account_name);
+    $M_bank_accounts->Insert_Data($MSG_imge[1], $account_name,$number_bank_accounts);
 					  
     @$Display = $M_bank_accounts->Read_Data();
     
@@ -65,32 +67,61 @@ $MSG_imge=checkImge();
             }
     }
    
-   if (isset($_POST['Update'])) {
-	   $id = $_POST['id'];
-           $account_name = $_POST['account_name'];
-          
-$MSG_imge=checkImge();	   
- include '../Model/M_bank_accounts.php';
-                $M_bank_accounts = new M_bank_accounts();
-				
-    if($MSG_imge[1] != "default_image.png"){
-		$sql = "UPDATE `bank_accounts` SET  `account_name` ='$account_name' 
-					,`imge`='$MSG_imge[1]'  WHERE `id`= '$id' ";
-                    $M_bank_accounts->Update_Data($sql);
-					    @$Display = $M_bank_accounts->Read_Data();
-    
-    include '../View/bank_accounts/index.php';
-   	}else{
-		$sql = "UPDATE `bank_accounts` SET  `account_name` ='$account_name' 
-		WHERE `id`= '$id' ";
-                    $M_bank_accounts->Update_Data($sql);
-					    @$Display = $M_bank_accounts->Read_Data();
-    
-    include '../View/bank_accounts/index.php';
-	}
-				
-			          
-    }
+    if (isset($_POST['Update'])) {
+        $id = $_POST['id'];
+        $account_name = $_POST['account_name'];
+        $number_bank_accounts = $_POST['number_bank_accounts'];   
+        
+        include '../Model/M_bank_accounts.php';
+        $M_bank_accounts = new M_bank_accounts();
+        
+        // التحقق من وجود صورة جديدة
+        if (isset($_FILES['imge']) && $_FILES['imge']['name'] != "") {
+            // توجد صورة جديدة - نتحقق منها ونرفعها
+            $MSG_imge = checkImge();
+            
+            if ($MSG_imge[0] == "") {
+                // لا يوجد خطأ في الصورة
+                $sql = "UPDATE `bank_accounts` SET  
+                        `account_name` = '$account_name', 
+                        `imge` = '$MSG_imge[1]', 
+                        `number_bank_accounts` = '$number_bank_accounts' 
+                        WHERE `id` = '$id'";
+                
+                // ✅ للتشخيص - أضف هذا سطر مؤقتاً
+                echo "<!-- استعلام التحديث مع الصورة: $sql -->";
+                
+                $M_bank_accounts->Update_Data($sql);
+            } else {
+                // يوجد خطأ في الصورة
+                echo "<script>alert('" . $MSG_imge[0] . "');</script>";
+                // نكمل بدون تحديث الصورة
+                $sql = "UPDATE `bank_accounts` SET  
+                        `account_name` = '$account_name', 
+                        `number_bank_accounts` = '$number_bank_accounts' 
+                        WHERE `id` = '$id'";
+                
+                // ✅ للتشخيص - أضف هذا سطر مؤقتاً
+                echo "<!-- استعلام التحديث بدون صورة (بعد خطأ الصورة): $sql -->";
+                
+                $M_bank_accounts->Update_Data($sql);
+            }
+        } else {
+            // لا توجد صورة جديدة - تحديث بدون صورة
+            $sql = "UPDATE `bank_accounts` SET  
+                    `account_name` = '$account_name', 
+                    `number_bank_accounts` = '$number_bank_accounts' 
+                    WHERE `id` = '$id'";
+            
+            // ✅ للتشخيص - أضف هذا سطر مؤقتاً
+            echo "<!-- استعلام التحديث بدون صورة: $sql -->";
+            
+            $M_bank_accounts->Update_Data($sql);
+        }
+        
+        @$Display = $M_bank_accounts->Read_Data();
+        include '../View/bank_accounts/index.php';
+    }            
 
     // حذف البيانات
     if (isset($_REQUEST['Delete'])) {

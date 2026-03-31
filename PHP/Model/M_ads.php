@@ -24,9 +24,13 @@ class M_ads
 
     public function Insert_Data($imge,$note,$date_create,$time_create)
     {
-        $sql_Insert="INSERT INTO `ads` (`id`,`imge`, `note`, `date_create`, `time_create`)
+        if (isset($_SESSION['getId_User']) && !empty($_SESSION['getId_User'])) {
+        
+            // رقم الأدمن من الجلسة
+            $A_id = $_SESSION['getId_User'];
+        $sql_Insert="INSERT INTO `ads` (`id`,`imge`, `note`, `date_create`, `time_create`, `A_id`)
         VALUES ('null','$imge', '$note','$date_create'
-		,'$time_create') ";
+		,'$time_create', '$A_id') ";
 
  
 
@@ -52,7 +56,7 @@ class M_ads
     })
 	</script>';
         }
-    }
+    }}
 
     public function Update_Data($sql)
     {

@@ -9,6 +9,7 @@
    @$NumberOf_reservations1 = $M_Dashboard->NumberOf_reservations1();
    @$NumberOf_reservations2 = $M_Dashboard->NumberOf_reservations2();
    @$NumberOf_reservations3 = $M_Dashboard->NumberOf_reservations3();
+
     
    // @$NumberOfusers = 1;
     

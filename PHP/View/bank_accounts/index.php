@@ -56,6 +56,7 @@
                 <th> الرقم</th>
                 <th> اسم الحساب</th>
 				<th> شعار الحساب</th>
+                <th>رقم الحساب </th>
 			    <th> العمليات</th>
                                                     </tr>
                                                 </thead>
@@ -73,13 +74,14 @@
        <td>{$Display[$i]['id']}</td>
        <td>{$Display[$i]['account_name']}</td>
        <td><img  style='height:35px;  width: 35px;'; class='img_doc_display'  src='../../image/bank/{$Display[$i]['imge']}'></td>
+       <td>{$Display[$i]['number_bank_accounts']}</td>
       <td><div class='btn-group btn-group-sm'>
 	 
 													
       <button data-toggle='modal' data-target='#modal_edit'
 	 data-placement='bottom' title='تعديل' class='btn btn-link'  
   onclick='dispalyData(this)' 
-  data-id='{$Display[$i]['id']}' data-account_name='{$Display[$i]['account_name']}'>
+  data-id='{$Display[$i]['id']}' data-account_name='{$Display[$i]['account_name']}'data-number_bank_accounts='{$Display[$i]['number_bank_accounts']}'>
     <i class='fa fa-edit'></i>
   </button>
       <form class='form_delete' method='POST' action=''> <a class='delete_User' data-value='{$Display[$i]['id']}' data-toggle='tooltip' data-placement='left' title='حذف' onclick='return confirm(".'"Do you want to delete"'.");'><input  class='id' type='hidden' name='id' value='{$Display[$i]['id']}'>
@@ -95,6 +97,7 @@
                 <th> الرقم</th>
                 <th> اسم الحساب</th>
 				<th> شعار الحساب</th>
+                <th>رقم الحساب </th>
 			    <th> العمليات</th>
                                                     </tr>
                                                 </tfoot>

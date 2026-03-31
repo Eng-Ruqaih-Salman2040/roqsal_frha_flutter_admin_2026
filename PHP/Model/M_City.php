@@ -24,8 +24,14 @@ class M_City
 
     public function Insert_Data($name, $statues)
     {
-        $sql_Insert="INSERT INTO `city` (`id`, `name`, `statues`)
-        VALUES ('null','$name', '$statues') ";
+        if (isset($_SESSION['getId_User']) && !empty($_SESSION['getId_User'])) {
+        
+            // رقم الأدمن من الجلسة
+            $A_id = $_SESSION['getId_User'];
+            
+           
+            $sql_Insert = "INSERT INTO `city` (`id`, `name`, `statues`, `A_id`)
+                           VALUES (NULL, '$name', '$statues', '$A_id')";
         if ($this->Database->Connect->query($sql_Insert) == true) {
             echo '<script> 
                  Swal.fire({
@@ -36,8 +42,7 @@ class M_City
       buttonsStyling: false,
     });
 	</script>';
-	
-        } else {
+    }} else {
     echo '<script>
 			Swal.fire({
       type: "error",

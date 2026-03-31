@@ -24,8 +24,12 @@ class M_section
 
     public function Insert_Data($name,$sort,$image, $status)
     {
-        $sql_Insert="INSERT INTO `section` (`id`, `name`, `sort`, `image`, `status`)
-        VALUES ('null','$name','$sort','$image', '$status') ";
+        if (isset($_SESSION['getId_User']) && !empty($_SESSION['getId_User'])) {
+        
+            // رقم الأدمن من الجلسة
+            $A_id = $_SESSION['getId_User'];
+        $sql_Insert="INSERT INTO `section` (`id`, `name`, `sort`, `image`, `status`,`A_id`)
+        VALUES ('null','$name','$sort','$image', '$status','$A_id') ";
         if ($this->Database->Connect->query($sql_Insert) == true) {
             echo '<script> 
                  Swal.fire({
@@ -48,7 +52,7 @@ class M_section
     })
 	</script>';
         }
-    }
+    }}
 
     public function Update_Data($sql)
     {

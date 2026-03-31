@@ -1,11 +1,11 @@
                      <input type="hidden" id="id" name="id">     
                                                 	<div class="form-label-group">
-                                                        <textarea class="form-control"  id="note" name="note" placeholder=" ملاحظة" rows="3"></textarea>
+                                                        <textarea class="form-control"  id="note" name="note" placeholder=" ملاحظة" rows="3" required></textarea>
                                                         <label for="note">ملاحظة</label>
                                                     </div>
 												   <div class="custom-file">
-                                                         <input type="file" name="imge" class="custom-file-input" id="imge">
-                                                         <label class="custom-file-label" accept="image/*" for="chooseFile">صورة</label>
+                                                         <input type="file" name="imge" class="custom-file-input" id="imge"required>
+                                                         <label class="custom-file-label" accept="image/*" for="chooseFile" >صورة</label>
                                                     </div>
 			       <script type="text/javascript">
 
