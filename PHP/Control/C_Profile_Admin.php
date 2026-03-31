@@ -63,7 +63,16 @@ $MSG_imge=checkImge();
 		    $_SESSION['email'] =$email;
 		    $_SESSION['note'] =$note;
 			$_SESSION['layout_them'] =$layout_them;
-//			 echo "<script> alert(".$_POST['layout_them'].");</script>";         
+            
+            // حقن كود جافاسكريبت فوري لتغيير المظهر مباشرة بدون الحاجة للتحديث اليدوي
+            echo '<script>
+                var b = document.getElementsByTagName("body")[0];
+                if ("'.$layout_them.'" === "1") {
+                    b.classList.add("dark-layout");
+                } else {
+                    b.classList.remove("dark-layout");
+                }
+            </script>';
     }
 	// session_destroy();
 	

@@ -63,22 +63,15 @@
                                                                 </div>
                                                             </fieldset>
                                                         </div>
-                                                        <div class="text-right"><a href="auth-forgot-password.html" class="card-link">هل نسيت كلمة السر؟</a></div>
                                                     </div>
 
-                                                    <div class="d-flex justify-content-between mt-2">
-                                                        <button type="submit" name="login" value="login" class="btn btn-primary float-right btn-inline">تسجيل الدخول</button>
-                                                </form>
-                                                <form method="POST" action="">
-                                                    <button type="submit" name="Register" value="Register" class="btn btn-outline-primary float-left btn-inline">إنشاء حساب</button>
+                                                    <div class="d-flex justify-content-center mt-2">
+                                                        <button type="submit" name="login" value="login" class="btn btn-primary btn-block" style="max-width:220px;">تسجيل الدخول</button>
+                                                    </div>
                                                 </form>
                                                     </div>
-                                            </div>
                                         </div>
                                         <div class="login-footer">
-                                            <div class="divider">
-                                                <div class="divider-text">أو</div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
