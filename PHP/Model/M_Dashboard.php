@@ -132,7 +132,7 @@ $sql="SELECT COUNT(*) AS NumberOfusers FROM shop;";
     }
       public function NumberOf_reservations3() {
 if (isset($_SESSION['validity']) && $_SESSION['validity'] === "1"){
-         $sql = "SELECT COUNT(*) FROM reservations WHERE reservation_status='3'";
+         $sql = "SELECT COUNT(*) FROM reservations WHERE reservation_status='0'";
         $result = $this->Database->Connect->query($sql);
             if($row = $result -> fetch_row()){
 	            return $row[0];
@@ -141,7 +141,7 @@ if (isset($_SESSION['validity']) && $_SESSION['validity'] === "1"){
             }
 			}elseif(isset($_SESSION['validity']) && $_SESSION['validity'] === "0"){
                 $shop_id= $_SESSION['getId_User'];
-                $sql="SELECT COUNT(*) AS NumberOfusers FROM reservations WHERE shop_id= '$shop_id'AND reservation_status='3' ";
+                $sql="SELECT COUNT(*) AS NumberOfusers FROM reservations WHERE shop_id= '$shop_id'AND reservation_status='0' ";
                 $result = $this->Database->Connect->query($sql);
             if($row = $result -> fetch_row()){
 	            return $row[0];

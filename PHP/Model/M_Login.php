@@ -51,7 +51,7 @@ $sql="SELECT * FROM users WHERE  user_name='$user_name' and 		password='$passowr
 		    $_SESSION['phone'] =$row[4];
 		    $_SESSION['email'] =$row[5];
 		    $_SESSION['note'] =$row[6];
-		    $_SESSION['layout_them'] =$row[12];
+		    $_SESSION['layout_them'] =$row[11]; // layout_them is column index 11 in users table
 			$_SESSION['validity'] ="1";
 			 
 	   return true;
