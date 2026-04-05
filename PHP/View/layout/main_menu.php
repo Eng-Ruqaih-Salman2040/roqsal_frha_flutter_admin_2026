@@ -75,6 +75,14 @@ fa-calendar"></i><span class="menu-title" data-i18n="User">الخدمات</span>
 fa-bank"></i><span class="menu-title" data-i18n="User">الحسابات</span></a>
                 </li>';
 				}?>
+				  	<?php 
+				if($_SESSION['validity']==="1"){
+		      echo '<li class="';
+		      active("reservations");
+              echo' nav-item"><a href="?page1=reservations"><i class="fa 
+fa-hospital-o"></i><span class="menu-title" data-i18n="User">حجوزات جديدة</span></a>
+                </li>';
+				}?>
 			
  						        	<?php 
 				if($_SESSION['validity']==="1"){
@@ -123,7 +131,7 @@ fa-bullhorn"></i><span class="menu-title" data-i18n="User">اعلانات الت
 		      echo '<li class="';
 		      active("Reports");
               echo' nav-item"><a href="?page1=Reports"><i class="fa 
-fa-bullhorn"></i><span class="menu-title" data-i18n="User"> التقارير </span></a>
+			  fa-file-text"></i><span class="menu-title" data-i18n="User"> التقارير </span></a>
                 </li>';
 				}?>
 				 
