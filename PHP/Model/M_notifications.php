@@ -35,6 +35,7 @@ class M_notifications
                         VALUES ('$note', '$date_create', '$time_create', '$A_id')";
         
         if ($this->Database->Connect->query($sql_Insert) == true) {
+            $this->Send_Firebase_Notification("إشعار جديد", $note);
             echo '<script> 
                 Swal.fire({
                     title: "تم الحفظ بنجاح!",
@@ -144,6 +145,81 @@ class M_notifications
 	</script>'
 	;
         }
+    }
+
+    public function Send_Firebase_Notification($title, $body)
+    {
+        require_once __DIR__ . '/../View/vendor/autoload.php'; // مكتبة JWT
+        
+        $serviceAccountFile = __DIR__ . '/../View/notifications/service-account1.json';
+        if (!file_exists($serviceAccountFile)) {
+            $serviceAccountFile = __DIR__ . '/../View/notifications/firebase_key.json';
+        }
+        
+        if (!file_exists($serviceAccountFile)) {
+            return false;
+        }
+
+        $serviceAccount = json_decode(file_get_contents($serviceAccountFile), true);
+
+        $tokenUrl = "https://oauth2.googleapis.com/token";
+        $now = time();
+        $jwtClaim = [
+            "iss" => $serviceAccount['client_email'],
+            "scope" => "https://www.googleapis.com/auth/firebase.messaging",
+            "aud" => $tokenUrl,
+            "iat" => $now,
+            "exp" => $now + 3600
+        ];
+
+        $privateKey = $serviceAccount['private_key'];
+        $jwt = \Firebase\JWT\JWT::encode($jwtClaim, $privateKey, 'RS256');
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $tokenUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/x-www-form-urlencoded"]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+            'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            'assertion' => $jwt
+        ]));
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $tokenData = json_decode($response, true);
+        $accessToken = $tokenData['access_token'] ?? null;
+
+        if(!$accessToken){
+            return false;
+        }
+
+        $fcmUrl = "https://fcm.googleapis.com/v1/projects/{$serviceAccount['project_id']}/messages:send";
+
+        $data = [
+            "message" => [
+                "topic" => "all",
+                "notification" => [
+                    "title" => $title,
+                    "body" => $body
+                ]
+            ]
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $fcmUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            "Authorization: Bearer $accessToken",
+            "Content-Type: application/json"
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        
+        $result = curl_exec($ch);
+        curl_close($ch);
+        
+        return true;
     }
 
 }
