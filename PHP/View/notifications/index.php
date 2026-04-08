@@ -38,9 +38,6 @@
                                                     <button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="modal" data-target="#defaultSize">
                                                         اضافة اشعار جديد
                                                     </button>
-                                                                          <button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="modal" data-target="#defaultSize1">
-                                                        اضافة اشعار جديد
-                                                    </button>
 													   </h4>
                                 </div>
                                 <div class="card-content">
